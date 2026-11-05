@@ -561,3 +561,32 @@ section { padding-block: clamp(var(--space-12), 7vw, var(--space-24)); }
 .cover-band { position:relative; z-index:1; height:42px; flex:none; background:var(--cv-navy); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:.16em; font-size:13px; }
 @media (max-width:600px) { .cover-contact { flex-direction:column; align-items:center; gap:10px; } .cover-contact li:last-child a { text-align:center; } .cover-contact li:last-child svg { display:none; } }
 .cover { padding:0 !important; }
+
+/* ===== Category tabs: gradient push buttons with icons ===== */
+.catalog-tabs-hint { font-size: var(--text-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 var(--space-3); }
+.catalog-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-bottom: 0; margin-bottom: var(--space-8); }
+@media (min-width: 700px) { .catalog-tabs { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1100px) { .catalog-tabs { grid-template-columns: repeat(7, 1fr); } }
+.catalog-tab {
+  --g1:#d6343c; --g2:#a8161e;
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: 62px; padding: 14px 16px; text-align: left;
+  font-family: var(--font-display); font-size: 16px; font-weight: 800; line-height: 1.15; color: #fff;
+  background: linear-gradient(135deg, var(--g1), var(--g2)); border: 0; border-radius: 12px;
+  box-shadow: 0 6px 14px color-mix(in oklab, var(--g2) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.25);
+  cursor: pointer; -webkit-tap-highlight-color: transparent; opacity: .82;
+  transition: transform .12s ease, box-shadow .15s ease, opacity .15s ease, filter .15s ease;
+}
+.catalog-tab::after { content: none; }
+.catalog-tab .tab-icon { width: 24px; height: 24px; flex: none; opacity: .95; }
+.catalog-tab:hover { color: #fff; opacity: 1; filter: brightness(1.05); transform: translateY(-1px); }
+.catalog-tab:active { transform: translateY(2px) scale(.98); box-shadow: 0 2px 6px color-mix(in oklab, var(--g2) 35%, transparent), inset 0 2px 4px rgba(0,0,0,.15); }
+.catalog-tab.is-active { opacity: 1; color: #fff; box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 6px var(--g2), 0 10px 22px color-mix(in oklab, var(--g2) 45%, transparent); }
+.catalog-tab[data-tab="brick"]      { --g1:#e0453c; --g2:#b01d24; }
+.catalog-tab[data-tab="stone"]      { --g1:#8a96a8; --g2:#56637a; }
+.catalog-tab[data-tab="fireside"]   { --g1:#f59a3b; --g2:#d9541e; }
+.catalog-tab[data-tab="outdoor"]    { --g1:#2fc59a; --g2:#11946f; }
+.catalog-tab[data-tab="shutters"]   { --g1:#3d8bf2; --g2:#1c5fd1; }
+.catalog-tab[data-tab="commercial"] { --g1:#24386b; --g2:#0e1a3c; }
+.catalog-tab[data-tab="lifestyle"]  { --g1:#f06b8a; --g2:#d23d63; }
+@media (max-width: 600px) { .catalog-tab { min-height: 64px; font-size: 15px; } }
